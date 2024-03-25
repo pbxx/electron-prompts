@@ -7,7 +7,7 @@ import events from "node:events"
 
 import { v4 as uuidv4 } from "uuid"
 
-// const __dirname = url.fileURLToPath(new URL(".", import.meta.url))
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url))
 
 export default class PromptManager {
 	constructor(opts) {
@@ -86,7 +86,7 @@ export default class PromptManager {
 				width: 600,
 				height: 300,
 				webPreferences: {
-					preload: path.resolve("pages/prompt/preload.js"),
+					preload: path.resolve(__dirname, "static/prompt/preload.js"),
 				},
 				autoHideMenuBar: true,
 				transparent: true,
@@ -109,7 +109,7 @@ export default class PromptManager {
 
 			// load prompt page
 			// it will "adopt" a prompt in the #adoptablePrompts object, or close if none are present
-			this.#windows[uuid].loadFile("pages/prompt/prompt.html")
+			this.#windows[uuid].loadFile(__dirname + "static/prompt/prompt.html")
 
 			const doneHandler = (id, data) => {
 				if (id === uuid) {
