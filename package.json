@@ -2,13 +2,10 @@
   "name": "electron-prompts",
   "version": "1.0.0",
   "description": "An easy tool to enable prompts from the Electron main proecss",
-  "main": "prompts.js",
+  "main": "index.js",
   "type": "module",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "electron test/test.js"
   },
   "repository": {
     "type": "git",

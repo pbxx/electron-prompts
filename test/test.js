@@ -1,4 +1,4 @@
-import PromptManager from "./prompts.js"
+import PromptManager from "../index.js"
 
 const prompts = new PromptManager({
     devMode: true,
@@ -22,9 +22,9 @@ const result = await prompts.spawn({
         {
             name: "displayName",
             type: "input",
-            placeholder: strings.namePrompt.placeholder,
+            placeholder: "Test Time",
             classes: ["form-control"],
-            value: "Pellux_",
+            value: "Username",
         },
     ],
     buttons: [

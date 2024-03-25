@@ -1,9 +1,11 @@
-import { app, Menu, Tray, shell, Notification } from "electron"
-import { v4 as uuidv4 } from "uuid"
+import { app, BrowserWindow, ipcMain } from "electron"
 
 import url from "node:url"
 import path from "node:path"
 import events from "node:events"
+
+
+import { v4 as uuidv4 } from "uuid"
 
 // const __dirname = url.fileURLToPath(new URL(".", import.meta.url))
 
