@@ -13,8 +13,9 @@ export default class PromptManager {
 	constructor(opts) {
 		this.options = {
 			width: 600,
-			baseHeight: 105,
+			baseHeight: 112,
 			devMode: false,
+			promptFile: __dirname + "static/prompt/prompt.html",
 			...opts
 		}
 		this.events = new events.EventEmitter()
@@ -109,7 +110,7 @@ export default class PromptManager {
 
 			// load prompt page
 			// it will "adopt" a prompt in the #adoptablePrompts object, or close if none are present
-			this.#windows[uuid].loadFile(__dirname + "static/prompt/prompt.html")
+			this.#windows[uuid].loadFile(this.options.promptFile)
 
 			const doneHandler = (id, data) => {
 				if (id === uuid) {
