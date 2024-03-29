@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "electron test/test.js"
+    "test": "electron-mocha test/test.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/pbxx/electron-prompts#readme",
   "dependencies": {
-    "electron": "^29.1.5",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "electron": "^29.1.6"
   }
 }

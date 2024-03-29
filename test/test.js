@@ -1,41 +1,49 @@
+import { expect } from "chai"
 import { app } from "electron"
 import PromptManager from "../index.js"
-async function init() {
-	const prompts = new PromptManager({
-		devMode: true,
-	})
 
-	const result = await prompts.spawn({
-		windowTitle: "electron-prompts",
-		cancelButton: {
-			classes: ["btn", "btn-secondary"],
-			// value: "Lets slow'r down there partner..."
+const prompts = new PromptManager({
+	devMode: true,
+})
+
+const pTemplate = {
+	windowTitle: "electron-prompts",
+	cancelButton: {
+		classes: ["btn", "btn-secondary"],
+		// value: "Lets slow'r down there partner..."
+	},
+	elements: [
+		{
+			type: "header",
+			value: "Enter test value",
 		},
-		elements: [
-			{
-				type: "header",
-				value: "Change display name",
-			},
-			{
-				type: "paragraph",
-				value: "Enter a new display name below:",
-			},
-			{
-				name: "displayName",
-				type: "input",
-				placeholder: "Test Time",
-				classes: ["form-control"],
-				value: "Username",
-			},
-		],
-		buttons: [
-			{
-				name: "submit",
-				classes: ["btn", "btn-primary"],
-				value: "Save Changes",
-			},
-		],
-	})
-	logs.log("prompt completed", result)
+		{
+			type: "paragraph",
+			value: "Add a space to the end of the default value to test changed value:",
+		},
+		{
+			name: "testValue",
+			type: "input",
+			placeholder: "Test input",
+			classes: ["form-control"],
+			value: "Add a space after me please:",
+		},
+	],
+	buttons: [
+		{
+			name: "submit",
+			classes: ["btn", "btn-primary"],
+			value: "Save Changes",
+		},
+	],
 }
-app.whenReady().then(init)
+const result = await prompts.spawn(pTemplate)
+
+it("correct value should be returned on changed prompt", async () => {
+	
+	// expect(results).to.be.an("array").that.is.not.empty
+	// console.log(result)
+	expect(result.values.testValue).to.be.ok
+	expect(result.values.testValue).to.equal("Add a space after me please: ")
+	return
+})
