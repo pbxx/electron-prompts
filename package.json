@@ -1,7 +1,7 @@
 {
   "name": "electron-prompts",
-  "version": "0.9.0",
-  "description": "An easy tool to enable prompts from the Electron main proecss",
+  "version": "0.9.1",
+  "description": "An easy tool to enable prompts from the Electron main process",
   "main": "index.js",
   "type": "module",
   "scripts": {
