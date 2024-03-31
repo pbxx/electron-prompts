@@ -2,7 +2,7 @@
 # electron-prompts
 ![Logo](assets/prompt-screenshot.png)
 
-An easy tool to enable prompts from the Electron main process
+An easy tool for creating interactive prompts from the Electron main process
 
 # Installation
 ```bash
@@ -12,7 +12,7 @@ npm install electron-prompts
 # Usage
 Import and instantiate a `PromptManager` for your project:
 ```js
-import PromptManager from "../index.js"
+import PromptManager from "electron-prompts"
 
 const prompts = new PromptManager({
 	devMode: true,
