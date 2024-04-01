@@ -70,6 +70,8 @@ async function init() {
 		logs.log(adoptedPrompt, adoptedPrompt.windowTitle)
 		// set title bar text
 		elems.titleText.innerHTML = adoptedPrompt.windowTitle
+		// set window title
+		document.title = adoptedPrompt.windowTitle
 		adoptedPrompt.elements.forEach((elem) => {
 			// append each form element
 			switch (elem.type) {
