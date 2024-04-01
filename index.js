@@ -14,6 +14,7 @@ export default class PromptManager {
 		this.options = {
 			width: 600,
 			baseHeight: 112,
+			resizable: false,
 			devMode: false,
 			promptFile: __dirname + "static/prompt/prompt.html",
 			...opts
@@ -84,14 +85,14 @@ export default class PromptManager {
 			}
 			// spawn browser window for prompt
 			this.#windows[uuid] = new BrowserWindow({
-				width: 600,
-				height: 300,
+				width: this.options.width,
+				height: this.options.baseHeight,
 				webPreferences: {
 					preload: path.resolve(__dirname, "static/prompt/preload.js"),
 				},
 				autoHideMenuBar: true,
 				transparent: true,
-				resizable: this.options.devMode,
+				resizable: this.options.resizable,
 				frame: false,
 			})
 
@@ -119,6 +120,7 @@ export default class PromptManager {
 					remListener()
 					if (data !== null) {
 						// prompt wasn't cancelled, resolve with data
+
 						resolve({
 							...data,
 						})

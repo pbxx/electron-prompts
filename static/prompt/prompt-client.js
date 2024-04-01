@@ -17,10 +17,13 @@ const logs = {
 async function handleButtonClick(id, index) {
 	logs.log(id, index)
 	// await window.electronAPI.formDone(id, {foo: "bar"} )
-	await window.electronAPI.formDone(id, {
-		values: formState,
-		button: index,
-	})
+	var promptResult = {
+		button: index
+	}
+	if (formState) {
+		promptResult["values"] = formState
+	}
+	await window.electronAPI.formDone(id, promptResult)
 	window.close()
 }
 
@@ -135,7 +138,7 @@ async function init() {
 		window.addEventListener("keypress", async (event) => {
 			if (event.key === "Enter") {
 				event.preventDefault()
-				await handleButtonClick(adoptedPrompt.uuid, "enter")
+				await handleButtonClick(adoptedPrompt.uuid, "_enter")
 			}
 		})
 		
