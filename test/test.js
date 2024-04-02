@@ -4,6 +4,7 @@ import PromptManager from "../index.js"
 
 const prompts = new PromptManager({
 	devMode: true,
+	resizable: true,
 })
 
 const pTemplate = {
@@ -46,67 +47,95 @@ it("correct value should be returned on changed prompt", async () => {
 	return
 })
 
+const selectTemplate = {
+	...pTemplate,
+	elements: [
+		{
+			type: "header",
+			value: "Select menu test",
+		},
+		{
+			type: "paragraph",
+			value: "Select the other option in the menu and submit the form",
+		},
+		{
+			name: "testSelect",
+			type: "select",
+			classes: ["form-select"],
+			options: [
+				{ value: "test1", text: "Test option 1" },
+				{ value: "test2", text: "Test option 2", selected: true },
+			],
+		},
+	],
+}
+
+const selectResult = await prompts.spawn(selectTemplate)
+
+it("correct value should be returned changed select", async () => {
+	expect(selectResult).to.be.ok
+	expect(selectResult.values).to.be.ok
+	expect(selectResult.values).to.be.ok
+	console.log(selectResult.values)
+	expect(selectResult.values.testSelect).to.equal("test1")
+	return
+})
+
+const selectTemplate2 = {
+	...pTemplate,
+	elements: [
+		{
+			type: "header",
+			value: "Select menu test",
+		},
+		{
+			type: "paragraph",
+			value: "Leave this select menu UNCHANGED then submit:",
+		},
+		{
+			name: "testSelect",
+			type: "select",
+			classes: ["form-select"],
+			options: [
+				{ value: "test1", text: "Test option 1" },
+				{ value: "test2", text: "Test option 2", selected: true },
+			],
+		},
+	],
+}
+
+const selectResult2 = await prompts.spawn(selectTemplate2)
+
+it("correct value should be returned UN-changed select", async () => {
+	console.log(selectResult2)
+	expect(selectResult2).to.be.ok
+	expect(selectResult2.values).to.not.be.ok
+	expect(selectResult2.values).to.not.be.ok
+	expect(selectResult2.button).to.be.ok
+	return
+})
+
 const cancelTemplate = {
 	...pTemplate,
 	elements: [
 		{
 			type: "header",
-			value: "Test Prompt cancellation",
+			value: "Test Prompt closing",
 		},
 		{
 			type: "paragraph",
-			value: "CANCEL this prompt",
+			value: "Cancel this prompt",
 		},
-		{
-			name: "testValue",
-			type: "input",
-			placeholder: "Test input",
-			classes: ["form-control"],
-			value: "You do not want to enter this value and you are pressing cancel...",
-		},
-	]
+	],
 }
 
-const cancelTemplate2 = {
-	...pTemplate,
-	elements: [
-		{
-			type: "header",
-			value: "The easiest prompts ever!",
-		},
-		{
-			type: "paragraph",
-			value: "An easy tool to enable spawning prompts from the Electron main process",
-		},
-		{
-			name: "testValue",
-			type: "input",
-			placeholder: "Test input",
-			classes: ["form-control"],
-			value: "With inputs!",
-		},
-		{
-			type: "paragraph",
-			value: "Also paragraphs",
-		},
-		{
-			name: "testValue",
-			type: "input",
-			placeholder: "Or even another input!",
-			classes: ["form-control"],
-			value: "",
-		},
-	]
-}
-
-const result2 = await prompts.spawn(cancelTemplate2)
+const result2 = await prompts.spawn(cancelTemplate)
 
 it("correct value should be returned on cancelled prompt", async () => {
 	expect(result2).to.equal(null)
 	expect(result2).to.not.be.ok
 	return
 })
-
 
 const closedTemplate = {
 	...pTemplate,
@@ -118,8 +147,8 @@ const closedTemplate = {
 		{
 			type: "paragraph",
 			value: "CLOSE this prompt",
-		}
-	]
+		},
+	],
 }
 
 const result3 = await prompts.spawn(closedTemplate)

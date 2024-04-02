@@ -66,3 +66,28 @@ The `input` type property will create a text input in the prompt that will autom
 },
 ```
 
+
+## type: `select`
+
+The `select` type property will create a select input in the prompt that will automatically return the value if changed
+
+| Property | Required | Type | Default | Details |
+| --- | -- | -- |-- | -- |
+| `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
+| `options` | No | `Array` | N/A | An `Array` of Options Elements to add to the select menu. |
+| `classes` | No | `Array` | N/A | An `Array` of `string` CSS classes to apply to the input. |
+
+### `select` example
+
+```js
+{
+    type: "select",
+    name: "testSelect",
+    options: [
+        { value: "test1", text: "Test option 1" },
+        { value: "test2", text: "Test option 2", selected: true },
+    ],
+    classes: ["form-select"]
+}
+```
+
