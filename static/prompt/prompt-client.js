@@ -20,7 +20,13 @@ async function handleButtonClick(id, index) {
 	var promptResult = {
 		button: index
 	}
-	if (formState) {
+	var formStateLength
+	try {
+		formStateLength = Object.keys(formState).length
+	} catch (err) {
+		console.error(err)
+	}
+	if (formStateLength > 0) {
 		promptResult["values"] = formState
 	}
 	await window.electronAPI.formDone(id, promptResult)
@@ -55,6 +61,26 @@ function updateForm(stateIndex) {
 	logs.log(formState)
 }
 
+const utils = {
+	select: {
+		findDefault: (arr) => {
+			// finds the default value and index of the passed array of Option Elements
+			var defaultIndex = 0
+			var i = 0
+			arr.forEach((optObj) => {
+				// console.log(optObj)
+				if ("default" in optObj) {
+					// console.log("found a default select option at index " + i)
+					// this option was specified as default
+					defaultIndex = i
+				}
+				i++
+			})
+			return defaultIndex
+		}
+	}
+}
+
 async function init() {
 	const elems = {
 		ebox: document.getElementById("elemBox"),
@@ -76,51 +102,85 @@ async function init() {
 			// append each form element
 			switch (elem.type) {
 				case "header": {
-					var pElem = elems.ebox.appendChild(document.createElement("h4"))
-					pElem.innerHTML = elem.value
+					var domElem = elems.ebox.appendChild(document.createElement("h4"))
+					domElem.innerHTML = elem.value
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
-							pElem.classList.add(cssClass)
+							domElem.classList.add(cssClass)
 						})
 					}
 					break
 				}
 				case "paragraph": {
-					var pElem = elems.ebox.appendChild(document.createElement("p"))
-					pElem.innerHTML = elem.value
+					var domElem = elems.ebox.appendChild(document.createElement("p"))
+					domElem.innerHTML = elem.value
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
-							pElem.classList.add(cssClass)
+							domElem.classList.add(cssClass)
 						})
 					}
 					break
 				}
 				case "input": {
-					var pElem = elems.ebox.appendChild(document.createElement("input"))
+					var domElem = elems.ebox.appendChild(document.createElement("input"))
 					const thisIndex = elem.name
 					formStateDefaults[thisIndex] = elem.value
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
-							pElem.classList.add(cssClass)
+							domElem.classList.add(cssClass)
 						})
 					}
-					pElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
-					pElem.value = elem.value
-					pElem.setAttribute("id", `form-${thisIndex}`)
-					pElem.setAttribute("onkeyup", `updateForm("${thisIndex}")`)
+					domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
+					domElem.value = elem.value
+					domElem.setAttribute("id", `form-${thisIndex}`)
+					// event tracking
+					domElem.setAttribute("onkeyup", `updateForm("${thisIndex}")`)
+					break
+				}
+				case "select": {
+					var domElem = elems.ebox.appendChild(document.createElement("select"))
+					const thisIndex = elem.name
+					
+					if (elem.classes) {
+						elem.classes.forEach((cssClass) => {
+							domElem.classList.add(cssClass)
+						})
+					}
+					console.log(elem)
+					if (elem.options && Array.isArray(elem.options)) {
+						// these are the options of the select
+						var defaultOptionIndex = utils.select.findDefault(elem.options)
+						formStateDefaults[thisIndex] = elem.options[defaultOptionIndex].value
+						var i = 0
+						elem.options.forEach((opt) => {
+							if (opt.value) {
+								// value is required for a select
+								var optElem = domElem.appendChild(document.createElement("option"))
+								optElem.setAttribute("value", opt.value)
+								optElem.innerHTML = (opt.text || opt.value)
+								console.log(i, defaultOptionIndex)
+								if (i == defaultOptionIndex) {
+									// this is the default option
+									optElem.selected = true
+								}
+							}
+							i++
+						})
+					}
+
+					// domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
+					// domElem.value = elem.value
+					domElem.setAttribute("id", `form-${thisIndex}`)
+					// event tracking
+					domElem.setAttribute("onchange", `updateForm("${thisIndex}")`)
 					break
 				}
 			}
 		})
-		// set changable state to assembled defaults
-		/*
-		formState = {
-			...formStateDefaults,
-		}
-        */
 
 		// size window up based on element content height
 		await window.electronAPI.sizeUp(adoptedPrompt.uuid, elems.ebox.scrollHeight)
+		console.log(formStateDefaults)
 
 		//   append cancel button
 		var cancelButton = elems.bbox.appendChild(document.createElement("button"))
@@ -148,14 +208,14 @@ async function init() {
 		// append each action button
 		var i = 0
 		adoptedPrompt.buttons.forEach((elem) => {
-			var bElem = elems.bbox.appendChild(document.createElement("button"))
-			bElem.setAttribute("onclick", `handleButtonClick("${adoptedPrompt.uuid}", "${elem.name}")`)
+			var domElem = elems.bbox.appendChild(document.createElement("button"))
+			domElem.setAttribute("onclick", `handleButtonClick("${adoptedPrompt.uuid}", "${elem.name}")`)
 			if (elem.classes) {
 				elem.classes.forEach((cssClass) => {
-					bElem.classList.add(cssClass)
+					domElem.classList.add(cssClass)
 				})
 			}
-			bElem.innerHTML = elem.value
+			domElem.innerHTML = elem.value
 			i++
 		})
 		
