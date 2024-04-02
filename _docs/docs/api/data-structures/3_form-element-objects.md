@@ -74,7 +74,7 @@ The `select` type property will create a select input in the prompt that will au
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
 | `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
-| `options` | No | `string` | N/A | An `Array` of Options Elements to add to the select menu. |
+| `options` | No | `Array` | N/A | An `Array` of Options Elements to add to the select menu. |
 | `classes` | No | `Array` | N/A | An `Array` of `string` CSS classes to apply to the input. |
 
 ### `select` example
