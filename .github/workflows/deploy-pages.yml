@@ -5,13 +5,11 @@ on:
     branches:
       - main
     paths:
-      - docusaurus/**
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+      - _docs/**
 
 defaults:
   run:
-    working-directory: ./docusaurus
+    working-directory: ./_docs
 
 jobs:
   build:
@@ -35,7 +33,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docusaurus/build
+          path: _docs/build
 
   deploy:
     name: Deploy to GitHub Pages
