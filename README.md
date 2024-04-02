@@ -19,13 +19,12 @@ const prompts = new PromptManager({
 })
 ```
 
-Create and spawn a prompt using *prompt templates*:
+Create and spawn GUI prompts using simple [Prompt Templates](https://pbxx.github.io/electron-prompts/docs/api/data-structures/promptTemplate):
 ```js
 const pTemplate = {
 	windowTitle: "electron-prompts",
 	cancelButton: {
-		classes: ["btn", "btn-secondary"],
-		// value: "Lets slow'r down there partner..."
+		classes: ["btn", "btn-secondary"]
 	},
 	elements: [
 		{
@@ -34,21 +33,21 @@ const pTemplate = {
 		},
 		{
 			type: "paragraph",
-			value: "Add a space to the end of the default value to test changed value:",
+			value: "This is an easy user-input prompt made with electron-prompts:",
 		},
 		{
-			name: "testValue",
 			type: "input",
+			name: "testValue",
 			placeholder: "Test input",
+			value: "I am the default value",
 			classes: ["form-control"],
-			value: "Add a space after me please:",
 		},
 	],
 	buttons: [
 		{
 			name: "submit",
-			classes: ["btn", "btn-primary"],
 			value: "Save Changes",
+			classes: ["btn", "btn-primary"],
 		},
 	],
 }
@@ -56,4 +55,4 @@ const pTemplate = {
 const result = await prompts.spawn(pTemplate)
 ```
 
-*further documentation coming soon...*
+Further documentation available [here](https://pbxx.github.io/electron-prompts/).
