@@ -20,13 +20,7 @@ async function handleButtonClick(id, index) {
 	var promptResult = {
 		button: index
 	}
-	var formStateLength
-	try {
-		formStateLength = Object.keys(formState).length
-	} catch (err) {
-		console.error(err)
-	}
-	if (formStateLength > 0) {
+	if (Object.keys(formState).length > 0) {
 		promptResult["values"] = formState
 	}
 	await window.electronAPI.formDone(id, promptResult)
@@ -140,7 +134,6 @@ async function init() {
 				case "select": {
 					var domElem = elems.ebox.appendChild(document.createElement("select"))
 					const thisIndex = elem.name
-					
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
 							domElem.classList.add(cssClass)
