@@ -27,4 +27,4 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-The docs app is built and deployed to Github Pages with Github Actions automatically if anything in the `_docs/` directory is changed
+The docs app is built and deployed to Github Pages automatically if anything in the `_docs/` directory is changed
