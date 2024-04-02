@@ -1,0 +1,24 @@
+{
+  "id": "api/prompt-manager/spawn",
+  "title": "spawn()",
+  "description": "The async spawn() method spawns a prompt window given a passed Prompt Template:",
+  "source": "@site/docs/api/prompt-manager/spawn.md",
+  "sourceDirName": "api/prompt-manager",
+  "slug": "/api/prompt-manager/spawn",
+  "permalink": "/docs/api/prompt-manager/spawn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/prompt-manager/spawn.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "PromptManager",
+    "permalink": "/docs/api/prompt-manager/"
+  },
+  "next": {
+    "title": "Prompt Template",
+    "permalink": "/docs/api/data-structures/promptTemplate"
+  }
+}

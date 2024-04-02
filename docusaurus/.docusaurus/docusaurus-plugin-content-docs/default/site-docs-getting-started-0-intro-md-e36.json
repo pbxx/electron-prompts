@@ -1,0 +1,20 @@
+{
+  "id": "getting-started/0intro",
+  "title": "Introduction",
+  "description": "Logo",
+  "source": "@site/docs/getting-started/0intro.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/0intro",
+  "permalink": "/docs/getting-started/0intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/getting-started/0intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Installation and usage",
+    "permalink": "/docs/getting-started/installation-and-usage"
+  }
+}

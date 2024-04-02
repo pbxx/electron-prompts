@@ -1,0 +1,356 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs",
+          "editUrlLocalized": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "E:\\Local Projects\\electron-prompts\\docusaurus\\sidebars.js",
+          "contentPath": "E:\\Local Projects\\electron-prompts\\docusaurus\\docs",
+          "contentPathLocalized": "E:\\Local Projects\\electron-prompts\\docusaurus\\i18n\\en\\docusaurus-plugin-content-docs\\current",
+          "docs": [
+            {
+              "id": "api/data-structures/button-element-objects",
+              "title": "Button Element",
+              "description": "The Button Element object defines a button to be added to a prompt's button container.",
+              "source": "@site/docs/api/data-structures/4_button-element-objects.md",
+              "sourceDirName": "api/data-structures",
+              "slug": "/api/data-structures/button-element-objects",
+              "permalink": "/docs/api/data-structures/button-element-objects",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/data-structures/4_button-element-objects.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "previous": {
+                "title": "Form Element",
+                "permalink": "/docs/api/data-structures/form-element-objects"
+              }
+            },
+            {
+              "id": "api/data-structures/form-element-objects",
+              "title": "Form Element",
+              "description": "The Form Element is an object that defines a text or input element to be used in a prompt.",
+              "source": "@site/docs/api/data-structures/3_form-element-objects.md",
+              "sourceDirName": "api/data-structures",
+              "slug": "/api/data-structures/form-element-objects",
+              "permalink": "/docs/api/data-structures/form-element-objects",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/data-structures/3_form-element-objects.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "previous": {
+                "title": "Prompt Result",
+                "permalink": "/docs/api/data-structures/promptResult"
+              },
+              "next": {
+                "title": "Button Element",
+                "permalink": "/docs/api/data-structures/button-element-objects"
+              }
+            },
+            {
+              "id": "api/data-structures/promptResult",
+              "title": "Prompt Result",
+              "description": "The prompt result is returned from the spawn() method after user completion when either:",
+              "source": "@site/docs/api/data-structures/2_promptResult.md",
+              "sourceDirName": "api/data-structures",
+              "slug": "/api/data-structures/promptResult",
+              "permalink": "/docs/api/data-structures/promptResult",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/data-structures/2_promptResult.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "previous": {
+                "title": "Prompt Template",
+                "permalink": "/docs/api/data-structures/promptTemplate"
+              },
+              "next": {
+                "title": "Form Element",
+                "permalink": "/docs/api/data-structures/form-element-objects"
+              }
+            },
+            {
+              "id": "api/data-structures/promptTemplate",
+              "title": "Prompt Template",
+              "description": "The Prompt Template allows for customization of the text and inputs used in a prompt.",
+              "source": "@site/docs/api/data-structures/1_promptTemplate.md",
+              "sourceDirName": "api/data-structures",
+              "slug": "/api/data-structures/promptTemplate",
+              "permalink": "/docs/api/data-structures/promptTemplate",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/data-structures/1_promptTemplate.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "previous": {
+                "title": "spawn()",
+                "permalink": "/docs/api/prompt-manager/spawn"
+              },
+              "next": {
+                "title": "Prompt Result",
+                "permalink": "/docs/api/data-structures/promptResult"
+              }
+            },
+            {
+              "id": "api/prompt-manager/index",
+              "title": "PromptManager",
+              "description": "The PromptManager class orchestrates all spawning of prompts and returning of changed data.",
+              "source": "@site/docs/api/prompt-manager/index.md",
+              "sourceDirName": "api/prompt-manager",
+              "slug": "/api/prompt-manager/",
+              "permalink": "/docs/api/prompt-manager/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/prompt-manager/index.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "next": {
+                "title": "spawn()",
+                "permalink": "/docs/api/prompt-manager/spawn"
+              }
+            },
+            {
+              "id": "api/prompt-manager/spawn",
+              "title": "spawn()",
+              "description": "The async spawn() method spawns a prompt window given a passed Prompt Template:",
+              "source": "@site/docs/api/prompt-manager/spawn.md",
+              "sourceDirName": "api/prompt-manager",
+              "slug": "/api/prompt-manager/spawn",
+              "permalink": "/docs/api/prompt-manager/spawn",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/prompt-manager/spawn.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "apiSidebar",
+              "previous": {
+                "title": "PromptManager",
+                "permalink": "/docs/api/prompt-manager/"
+              },
+              "next": {
+                "title": "Prompt Template",
+                "permalink": "/docs/api/data-structures/promptTemplate"
+              }
+            },
+            {
+              "id": "getting-started/0intro",
+              "title": "Introduction",
+              "description": "Logo",
+              "source": "@site/docs/getting-started/0intro.md",
+              "sourceDirName": "getting-started",
+              "slug": "/getting-started/0intro",
+              "permalink": "/docs/getting-started/0intro",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/getting-started/0intro.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Installation and usage",
+                "permalink": "/docs/getting-started/installation-and-usage"
+              }
+            },
+            {
+              "id": "getting-started/installation-and-usage",
+              "title": "Installation and usage",
+              "description": "Import and instantiate a PromptManager for your project:",
+              "source": "@site/docs/getting-started/installation-and-usage.md",
+              "sourceDirName": "getting-started",
+              "slug": "/getting-started/installation-and-usage",
+              "permalink": "/docs/getting-started/installation-and-usage",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/getting-started/installation-and-usage.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/docs/getting-started/0intro"
+              },
+              "next": {
+                "title": "PromptManager",
+                "permalink": "/docs/api/prompt-manager/"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "category",
+                "label": "Getting Started",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "getting-started/0intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "getting-started/installation-and-usage"
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "hidden",
+                "collapsible": true,
+                "collapsed": true,
+                "className": "hidden-category",
+                "items": [
+                  {
+                    "type": "category",
+                    "label": "PromptManager Class",
+                    "collapsible": true,
+                    "collapsed": false,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/prompt-manager/spawn"
+                      }
+                    ],
+                    "link": {
+                      "type": "doc",
+                      "id": "api/prompt-manager/index"
+                    }
+                  },
+                  {
+                    "type": "category",
+                    "label": "Data Structures",
+                    "collapsible": true,
+                    "collapsed": false,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/data-structures/promptTemplate"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/data-structures/promptResult"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/data-structures/form-element-objects"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/data-structures/button-element-objects"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "apiSidebar": [
+              {
+                "type": "category",
+                "label": "PromptManager Class",
+                "collapsible": true,
+                "collapsed": false,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "api/prompt-manager/spawn"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "api/prompt-manager/index"
+                }
+              },
+              {
+                "type": "category",
+                "label": "Data Structures",
+                "collapsible": true,
+                "collapsed": false,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "api/data-structures/promptTemplate"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "api/data-structures/promptResult"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "api/data-structures/form-element-objects"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "api/data-structures/button-element-objects"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [],
+      "blogListPaginated": [],
+      "blogTags": {},
+      "blogTagsListPath": "/blog/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        },
+        "unlisted": false
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

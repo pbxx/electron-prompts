@@ -1,0 +1,25 @@
+{
+  "id": "api/data-structures/promptTemplate",
+  "title": "Prompt Template",
+  "description": "The Prompt Template allows for customization of the text and inputs used in a prompt.",
+  "source": "@site/docs/api/data-structures/1_promptTemplate.md",
+  "sourceDirName": "api/data-structures",
+  "slug": "/api/data-structures/promptTemplate",
+  "permalink": "/docs/api/data-structures/promptTemplate",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/data-structures/1_promptTemplate.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "spawn()",
+    "permalink": "/docs/api/prompt-manager/spawn"
+  },
+  "next": {
+    "title": "Prompt Result",
+    "permalink": "/docs/api/data-structures/promptResult"
+  }
+}

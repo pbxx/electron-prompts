@@ -1,0 +1,74 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "getting-started/0intro",
+          "docs": [
+            {
+              "id": "api/data-structures/button-element-objects",
+              "path": "/docs/api/data-structures/button-element-objects",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/data-structures/form-element-objects",
+              "path": "/docs/api/data-structures/form-element-objects",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/data-structures/promptResult",
+              "path": "/docs/api/data-structures/promptResult",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/data-structures/promptTemplate",
+              "path": "/docs/api/data-structures/promptTemplate",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/prompt-manager/index",
+              "path": "/docs/api/prompt-manager/",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/prompt-manager/spawn",
+              "path": "/docs/api/prompt-manager/spawn",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "getting-started/0intro",
+              "path": "/docs/getting-started/0intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "getting-started/installation-and-usage",
+              "path": "/docs/getting-started/installation-and-usage",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/getting-started/0intro",
+                "label": "getting-started/0intro"
+              }
+            },
+            "apiSidebar": {
+              "link": {
+                "path": "/docs/api/prompt-manager/",
+                "label": "PromptManager Class"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

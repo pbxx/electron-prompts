@@ -1,0 +1,20 @@
+{
+  "id": "api/prompt-manager/index",
+  "title": "PromptManager",
+  "description": "The PromptManager class orchestrates all spawning of prompts and returning of changed data.",
+  "source": "@site/docs/api/prompt-manager/index.md",
+  "sourceDirName": "api/prompt-manager",
+  "slug": "/api/prompt-manager/",
+  "permalink": "/docs/api/prompt-manager/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/pbxx/electron-prompts/tree/main/packages/create-docusaurus/templates/shared/docs/api/prompt-manager/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "apiSidebar",
+  "next": {
+    "title": "spawn()",
+    "permalink": "/docs/api/prompt-manager/spawn"
+  }
+}

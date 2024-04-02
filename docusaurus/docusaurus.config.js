@@ -10,7 +10,6 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'electron-prompts',
-  
   tagline: 'An easy tool for creating interactive prompts from the Electron main process',
   favicon: 'img/favicon.ico',
 
