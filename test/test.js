@@ -64,7 +64,7 @@ const selectTemplate = {
 			classes: ["form-select"],
 			options: [
 				{ value: "test1", text: "Test option 1" },
-				{ value: "test2", text: "Test option 2", default: true },
+				{ value: "test2", text: "Test option 2", selected: true },
 			],
 		},
 	],
@@ -98,7 +98,7 @@ const selectTemplate2 = {
 			classes: ["form-select"],
 			options: [
 				{ value: "test1", text: "Test option 1" },
-				{ value: "test2", text: "Test option 2", default: true },
+				{ value: "test2", text: "Test option 2", selected: true },
 			],
 		},
 	],

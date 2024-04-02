@@ -63,7 +63,7 @@ const utils = {
 			var i = 0
 			arr.forEach((optObj) => {
 				// console.log(optObj)
-				if ("default" in optObj) {
+				if ("selected" in optObj) {
 					// console.log("found a default select option at index " + i)
 					// this option was specified as default
 					defaultIndex = i
