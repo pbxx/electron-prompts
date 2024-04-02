@@ -1,6 +1,6 @@
 {
   "name": "electron-prompts",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "An easy tool to enable prompts from the Electron main process",
   "main": "index.js",
   "type": "module",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/pbxx/electron-prompts/issues"
   },
-  "homepage": "https://github.com/pbxx/electron-prompts#readme",
+  "homepage": "https://pbxx.github.io/electron-prompts/",
   "dependencies": {
     "uuid": "^9.0.1"
   },
