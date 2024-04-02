@@ -91,6 +91,11 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            href: 'https://www.npmjs.com/package/electron-prompts',
+            label: 'NPM',
+            position: 'right',
+          },
         ],
       },
       footer: {
@@ -101,7 +106,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/getting-started/installation-and-usage',
               },
             ],
           },
@@ -124,6 +129,10 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/pbxx/electron-prompts',
+              },
+              {
+                label: 'NPM',
+                href: 'https://www.npmjs.com/package/electron-prompts',
               },
             ],
           },
