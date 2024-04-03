@@ -117,23 +117,28 @@ async function init() {
 				}
 				case "input": {
 					var domElem = elems.ebox.appendChild(document.createElement("input"))
-					const thisIndex = elem.name
-					formStateDefaults[thisIndex] = elem.value
-					if (elem.classes) {
+					if ("inputType" in elem) {
+						// an input type was specified
+						domElem.setAttribute("type", elem.inputType)
+					}
+					const thisKey = elem.name
+					formStateDefaults[thisKey] = elem.value
+					if ("classes" in elem) {
 						elem.classes.forEach((cssClass) => {
 							domElem.classList.add(cssClass)
 						})
 					}
+					
 					domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
 					domElem.value = elem.value
-					domElem.setAttribute("id", `form-${thisIndex}`)
+					domElem.setAttribute("id", `form-${thisKey}`)
 					// event tracking
-					domElem.setAttribute("onkeyup", `updateForm("${thisIndex}")`)
+					domElem.setAttribute("onkeyup", `updateForm("${thisKey}")`)
 					break
 				}
 				case "select": {
 					var domElem = elems.ebox.appendChild(document.createElement("select"))
-					const thisIndex = elem.name
+					const thisKey = elem.name
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
 							domElem.classList.add(cssClass)
@@ -143,7 +148,7 @@ async function init() {
 					if (elem.options && Array.isArray(elem.options)) {
 						// these are the options of the select
 						var defaultOptionIndex = utils.select.findDefault(elem.options)
-						formStateDefaults[thisIndex] = elem.options[defaultOptionIndex].value
+						formStateDefaults[thisKey] = elem.options[defaultOptionIndex].value
 						var i = 0
 						elem.options.forEach((opt) => {
 							if (opt.value) {
@@ -163,9 +168,9 @@ async function init() {
 
 					// domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
 					// domElem.value = elem.value
-					domElem.setAttribute("id", `form-${thisIndex}`)
+					domElem.setAttribute("id", `form-${thisKey}`)
 					// event tracking
-					domElem.setAttribute("onchange", `updateForm("${thisIndex}")`)
+					domElem.setAttribute("onchange", `updateForm("${thisKey}")`)
 					break
 				}
 			}

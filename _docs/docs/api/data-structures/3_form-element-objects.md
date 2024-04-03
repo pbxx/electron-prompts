@@ -45,11 +45,12 @@ The `paragraph` type property inserts an `p` element into the prompt to display 
 
 ## type: `input`
 
-The `input` type property will create a text input in the prompt that will automatically return the value if changed
+The `input` type property will create an `input` element in the prompt that will automatically return the value if changed
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
 | `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
+| `inputType` | No | `string` | `text` | The `type=` attribute for the `<input>` element to be created. Any string-based [HTML `<input>` type](https://www.w3schools.com/html/html_form_input_types.asp) can be used. |
 | `placeholder` | No | `string` | N/A | The lighter text that appears when the input is empty. |
 | `value` | No | `string` | N/A | The default value that will already be in the input. |
 | `classes` | No | `Array` | N/A | An `Array` of `string` CSS classes to apply to the input. |
@@ -59,6 +60,7 @@ The `input` type property will create a text input in the prompt that will autom
 ```js
 {
     type: "input",
+    inputType: "email"
     name: "username",
     placeholder: "Enter a username to begin",
     value: "pbxx",
@@ -69,7 +71,7 @@ The `input` type property will create a text input in the prompt that will autom
 
 ## type: `select`
 
-The `select` type property will create a select input in the prompt that will automatically return the value if changed
+The `select` type property will create a `select` menu element in the prompt that will automatically return the value if changed
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
@@ -90,4 +92,3 @@ The `select` type property will create a select input in the prompt that will au
     classes: ["form-select"]
 }
 ```
-
