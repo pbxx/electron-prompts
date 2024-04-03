@@ -1,160 +1,149 @@
 import { expect } from "chai"
 import { app } from "electron"
+import fs from "node:fs"
 import PromptManager from "../index.js"
+
+var options
 
 const prompts = new PromptManager({
 	devMode: true,
 	resizable: true,
 })
 
-const pTemplate = {
-	windowTitle: "electron-prompts",
-	cancelButton: {
-		classes: ["btn", "btn-secondary"],
-		// value: "Lets slow'r down there partner..."
-	},
-	elements: [
-		{
-			type: "header",
-			value: "Enter test value",
-		},
-		{
-			type: "paragraph",
-			value: "Add a space to the end of the default value to test changed value:",
-		},
-		{
-			name: "testValue",
-			type: "input",
-			placeholder: "Test input",
-			classes: ["form-control"],
-			value: "Add a space after me please:",
-		},
-	],
-	buttons: [
-		{
-			name: "submit",
-			classes: ["btn", "btn-primary"],
-			value: "Save Changes",
-		},
-	],
-}
-const result = await prompts.spawn(pTemplate)
+const pTemplates = JSON.parse(fs.readFileSync("test/test-prompts.json"))
+const templateKeys = Object.keys(pTemplates)
 
-it("correct value should be returned on changed prompt", async () => {
-	expect(result).to.be.an("object").that.is.not.empty
-	expect(result.values.testValue).to.be.ok
-	expect(result.values.testValue).to.equal("Add a space after me please: ")
+const runPromptTest = async (key) => {
+	switch (key) {
+		case "changeValue": {
+			const result = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.changeValue,
+			})
+
+			it("correct value should be returned on changed prompt", async () => {
+				expect(result).to.be.an("object").that.is.not.empty
+				expect(result.values.testValue).to.be.ok
+				expect(result.values.testValue).to.equal("Add a space after me please: ")
+				return
+			})
+			break
+		}
+		case "changeValueTel": {
+			const result = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.changeValueTel,
+			})
+
+			it("correct value should be returned on changed prompt with inputType specified", async () => {
+				expect(result).to.be.an("object").that.is.not.empty
+				expect(result.values.testValue).to.be.ok
+				expect(result.values.testValue).to.equal("Add a space after me please: ")
+				return
+			})
+			break
+		}
+		case "changeSelect": {
+			const result = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.changeSelect,
+			})
+
+			it("correct value should be returned changed select", async () => {
+				expect(result).to.be.ok
+				expect(result.values).to.be.ok
+				expect(result.values).to.be.ok
+				console.log(result.values)
+				expect(result.values.testSelect).to.equal("test1")
+				return
+			})
+			break
+		}
+		case "dontChangeSelect": {
+			const selectResult2 = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.dontChangeSelect,
+			})
+
+			it("correct value should be returned UN-changed select", async () => {
+				console.log(selectResult2)
+				expect(selectResult2).to.be.ok
+				expect(selectResult2.values).to.not.be.ok
+				expect(selectResult2.values).to.not.be.ok
+				expect(selectResult2.button).to.be.ok
+				return
+			})
+			break
+		}
+		case "cancelPrompt": {
+			const result2 = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.cancelPrompt,
+			})
+
+			it("correct value should be returned on cancelled prompt", async () => {
+				expect(result2).to.equal(null)
+				expect(result2).to.not.be.ok
+				return
+			})
+			break
+		}
+		case "closePrompt": {
+			const result3 = await prompts.spawn({
+				...pTemplates.defaults,
+				...pTemplates.closePrompt,
+			})
+
+			it("same value should be returned on a closed prompt", async () => {
+				expect(result3).to.equal(null)
+				expect(result3).to.not.be.ok
+				return
+			})
+			break
+		}
+		// case "": {
+
+		// }
+	}
 	return
-})
-
-const selectTemplate = {
-	...pTemplate,
-	elements: [
-		{
-			type: "header",
-			value: "Select menu test",
-		},
-		{
-			type: "paragraph",
-			value: "Select the other option in the menu and submit the form",
-		},
-		{
-			name: "testSelect",
-			type: "select",
-			classes: ["form-select"],
-			options: [
-				{ value: "test1", text: "Test option 1" },
-				{ value: "test2", text: "Test option 2", selected: true },
-			],
-		},
-	],
-}
-
-const selectResult = await prompts.spawn(selectTemplate)
-
-it("correct value should be returned changed select", async () => {
-	expect(selectResult).to.be.ok
-	expect(selectResult.values).to.be.ok
-	expect(selectResult.values).to.be.ok
-	console.log(selectResult.values)
-	expect(selectResult.values.testSelect).to.equal("test1")
-	return
-})
-
-const selectTemplate2 = {
-	...pTemplate,
-	elements: [
-		{
-			type: "header",
-			value: "Select menu test",
-		},
-		{
-			type: "paragraph",
-			value: "Leave this select menu UNCHANGED then submit:",
-		},
-		{
-			name: "testSelect",
-			type: "select",
-			classes: ["form-select"],
-			options: [
-				{ value: "test1", text: "Test option 1" },
-				{ value: "test2", text: "Test option 2", selected: true },
-			],
-		},
-	],
-}
-
-const selectResult2 = await prompts.spawn(selectTemplate2)
-
-it("correct value should be returned UN-changed select", async () => {
-	console.log(selectResult2)
-	expect(selectResult2).to.be.ok
-	expect(selectResult2.values).to.not.be.ok
-	expect(selectResult2.values).to.not.be.ok
-	expect(selectResult2.button).to.be.ok
-	return
-})
-
-const cancelTemplate = {
-	...pTemplate,
-	elements: [
-		{
-			type: "header",
-			value: "Test Prompt closing",
-		},
-		{
-			type: "paragraph",
-			value: "Cancel this prompt",
-		},
-	],
 }
 
-const result2 = await prompts.spawn(cancelTemplate)
+const parseArgs = async () => {
+	var options = {}
+	for (var arg of process.argv) {
+		// iterate through all args
+		if (arg.includes("--")) {
+			// this is an option argument
+			var splitArg = arg.split("=")
+			if (splitArg.length > 1) {
+				// this is an option with a value
+				const val = splitArg[1].replace('"', "").replace("'", "")
+				const key = splitArg[0].replace("--", "")
+				options[key] = val
+			} else {
+				// this is a option has no value
+				const key = splitArg[0].replace("--", "")
+				options[key] = true
 
-it("correct value should be returned on cancelled prompt", async () => {
-	expect(result2).to.equal(null)
-	expect(result2).to.not.be.ok
-	return
-})
-
-const closedTemplate = {
-	...pTemplate,
-	elements: [
-		{
-			type: "header",
-			value: "Test Prompt closing",
-		},
-		{
-			type: "paragraph",
-			value: "CLOSE this prompt",
-		},
-	],
+			}
+		}
+	}
+	return options
 }
 
-const result3 = await prompts.spawn(closedTemplate)
+const run = async () => {
+	// console.log(pTemplates)
+	if ("only" in options) {
+		await runPromptTest(options.only)
+	} else {
+		for (var key of templateKeys) {
+			// console.log(key)
+			// console.log(key)
+			await runPromptTest(key)
+		}
+	}
+}
 
-it("same value should be returned on a closed prompt", async () => {
-	expect(result3).to.equal(null)
-	expect(result3).to.not.be.ok
-	return
-})
+options = await parseArgs()
+console.log(options)
+await run()

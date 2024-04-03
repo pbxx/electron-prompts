@@ -1,0 +1,148 @@
+{
+    "defaults": {
+        "windowTitle": "electron-prompts",
+        "cancelButton": {
+            "classes": [
+                "btn",
+                "btn-secondary"
+            ]
+        }
+    },
+    "changeValue": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Change test value"
+            },
+            {
+                "type": "paragraph",
+                "value": "Add a space to the end of the default value to test changed value:"
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "placeholder": "Test input",
+                "classes": ["form-control"],
+                "value": "Add a space after me please:"
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": ["btn", "btn-primary"],
+                "value": "Save Changes"
+            }
+        ]
+    },
+    "changeValueTel": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Change test value"
+            },
+            {
+                "type": "paragraph",
+                "value": "Change the last digit of the (fake) telephone number below:"
+            },
+            {
+                "type": "paragraph",
+                "value": "This also checks if the format "
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "inputType": "tel",
+                "placeholder": "Test input",
+                "classes": ["form-control"],
+                "value": "5556783241"
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": ["btn", "btn-primary"],
+                "value": "Save Changes"
+            }
+        ]
+    },
+    "changeSelect": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Select menu test"
+            },
+            {
+                "type": "paragraph",
+                "value": "Select the other option in the menu and submit the form"
+            },
+            {
+                "name": "testSelect",
+                "type": "select",
+                "classes": ["form-select"],
+                "options": [
+                    { "value": "test1", "text": "Test option 1" },
+                    { "value": "test2", "text": "Test option 2", "selected": true }
+                ]
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": ["btn", "btn-primary"],
+                "value": "Save Changes"
+            }
+        ]
+    },
+    "dontChangeSelect": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Select menu test"
+            },
+            {
+                "type": "paragraph",
+                "value": "Leave this select menu UNCHANGED then submit:"
+            },
+            {
+                "name": "testSelect",
+                "type": "select",
+                "classes": ["form-select"],
+                "options": [
+                    { "value": "test1", "text": "Test option 1" },
+                    { "value": "test2", "text": "Test option 2", "selected": true }
+                ]
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": ["btn", "btn-primary"],
+                "value": "Save Changes"
+            }
+        ]
+    },
+    "cancelPrompt": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Test Prompt cancelling"
+            },
+            {
+                "type": "paragraph",
+                "value": "Cancel this prompt"
+            }
+        ]
+    },
+    "closePrompt": {
+        "elements": [
+            {
+                "type": "header",
+                "value": "Test Prompt closing"
+            },
+            {
+                "type": "paragraph",
+                "value": "CLOSE this prompt"
+            }
+        ]
+    }
+}
