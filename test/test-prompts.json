@@ -22,19 +22,24 @@
                 "name": "testValue",
                 "type": "input",
                 "placeholder": "Test input",
-                "classes": ["form-control"],
+                "classes": [
+                    "form-control"
+                ],
                 "value": "Add a space after me please:"
             }
         ],
         "buttons": [
             {
                 "name": "submit",
-                "classes": ["btn", "btn-primary"],
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
                 "value": "Save Changes"
             }
         ]
     },
-    "changeValueTel": {
+    "changeValueWithType": {
         "elements": [
             {
                 "type": "header",
@@ -42,25 +47,55 @@
             },
             {
                 "type": "paragraph",
-                "value": "Change the last digit of the (fake) telephone number below:"
-            },
-            {
-                "type": "paragraph",
-                "value": "This also checks if the format "
+                "value": "Change the value below:"
             },
             {
                 "name": "testValue",
                 "type": "input",
-                "inputType": "tel",
-                "placeholder": "Test input",
-                "classes": ["form-control"],
-                "value": "5556783241"
+                "attributes": {
+                    "type": "date",
+                    "min": "2002-01-01",
+                    "max": "2102-01-01"
+                },
+                "classes": [
+                    "form-control"
+                ],
+                "value": "2007-01-01"
+            },
+            {
+                "type": "paragraph",
+                "value": "Additional test inputs:"
+            },
+            {
+                "type": "input",
+                "name": "pin",
+                "placeholder": "Enter a new PIN to continue",
+                "attributes": {
+                    "type": "password"
+                },
+                "classes": [
+                    "form-control"
+                ]
+            },
+            {
+                "type": "input",
+                "name": "fileTest",
+                "placeholder": "Try selecting a file",
+                "attributes": {
+                    "type": "file"
+                },
+                "classes": [
+                    "form-control"
+                ]
             }
         ],
         "buttons": [
             {
                 "name": "submit",
-                "classes": ["btn", "btn-primary"],
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
                 "value": "Save Changes"
             }
         ]
@@ -78,17 +113,29 @@
             {
                 "name": "testSelect",
                 "type": "select",
-                "classes": ["form-select"],
+                "classes": [
+                    "form-select"
+                ],
                 "options": [
-                    { "value": "test1", "text": "Test option 1" },
-                    { "value": "test2", "text": "Test option 2", "selected": true }
+                    {
+                        "value": "test1",
+                        "text": "Test option 1"
+                    },
+                    {
+                        "value": "test2",
+                        "text": "Test option 2",
+                        "selected": true
+                    }
                 ]
             }
         ],
         "buttons": [
             {
                 "name": "submit",
-                "classes": ["btn", "btn-primary"],
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
                 "value": "Save Changes"
             }
         ]
@@ -106,17 +153,29 @@
             {
                 "name": "testSelect",
                 "type": "select",
-                "classes": ["form-select"],
+                "classes": [
+                    "form-select"
+                ],
                 "options": [
-                    { "value": "test1", "text": "Test option 1" },
-                    { "value": "test2", "text": "Test option 2", "selected": true }
+                    {
+                        "value": "test1",
+                        "text": "Test option 1"
+                    },
+                    {
+                        "value": "test2",
+                        "text": "Test option 2",
+                        "selected": true
+                    }
                 ]
             }
         ],
         "buttons": [
             {
                 "name": "submit",
-                "classes": ["btn", "btn-primary"],
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
                 "value": "Save Changes"
             }
         ]

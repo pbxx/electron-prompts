@@ -14,6 +14,28 @@ const logs = {
 	},
 }
 
+const lTables = {
+	inputHTMLType: {
+		onChange: [
+			"number",
+			"radio",
+			"checkbox",
+			"range",
+			"file",
+			"date",
+			"datetime-local",
+			"time",
+			"week",
+			"month",
+		],
+		restrictedAttributes: [
+			"id",
+			"onchange",
+			"onkeyup"
+		]
+	}
+}
+
 async function handleButtonClick(id, index) {
 	logs.log(id, index)
 	// await window.electronAPI.formDone(id, {foo: "bar"} )
@@ -40,8 +62,7 @@ async function handleCancelButton() {
 var formStateDefaults = {}
 var formState = {}
 
-function updateForm(stateIndex) {
-	
+function updateFormState(stateIndex) {
 	const formValue = document.getElementById(`form-${stateIndex}`).value
 	logs.log(stateIndex, formValue)
 	if (formValue == formStateDefaults[stateIndex]) {
@@ -51,6 +72,32 @@ function updateForm(stateIndex) {
 		}
 	} else {
 		formState[stateIndex] = formValue
+	}
+	logs.log(formState)
+}
+
+function updateFormStateFile(stateIndex) {
+	var formFiles = []
+	var docFiles = document.getElementById(`form-${stateIndex}`).files
+	console.log(docFiles)
+	console.log(docFiles.length)
+	for (var i = 0; i < docFiles.length; i++) {
+		console.log("found a file")
+		formFiles.push({
+			name: docFiles[i].name,
+			path: docFiles[i].path,
+			size: docFiles[i].size,
+			lastModified: docFiles[i].lastModified,
+		})
+	}
+	logs.log(stateIndex, formFiles)
+	if (formFiles.length == 0) {
+		// value is same as default
+		if (stateIndex in formState) {
+			delete formState[stateIndex]
+		}
+	} else {
+		formState[stateIndex] = formFiles
 	}
 	logs.log(formState)
 }
@@ -117,28 +164,50 @@ async function init() {
 				}
 				case "input": {
 					var domElem = elems.ebox.appendChild(document.createElement("input"))
-					if ("inputType" in elem) {
-						// an input type was specified
-						domElem.setAttribute("type", elem.inputType)
+					var updateAttr = "onkeyup"
+					formStateDefaults[elem.name] = elem.value === undefined ? "" : elem.value
+					console.log(elem)
+					if ("attributes" in elem) {
+						// assign custom attributes if specified
+						if ("type" in elem.attributes && lTables.inputHTMLType.onChange.includes(elem.attributes.type)) {
+							// changes should be detected with onchange
+							updateAttr = "onchange"
+							
+						}
+						Object.keys(elem.attributes).forEach((attrKey) => {
+							if (!lTables.inputHTMLType.restrictedAttributes.includes(attrKey)) {
+								domElem.setAttribute(attrKey, elem.attributes[attrKey])
+							}
+						})
 					}
-					const thisKey = elem.name
-					formStateDefaults[thisKey] = elem.value
 					if ("classes" in elem) {
+						// assign custom classes if specified
 						elem.classes.forEach((cssClass) => {
 							domElem.classList.add(cssClass)
 						})
 					}
+					if ("placeholder" in elem) {
+						// shortcut for placeholder attribute
+						domElem.setAttribute("placeholder", elem.placeholder)
+					}
+					// set optional "value" attribute
+					if ("value" in elem) {
+						domElem.value = elem.value
+					}
 					
-					domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
-					domElem.value = elem.value
-					domElem.setAttribute("id", `form-${thisKey}`)
-					// event tracking
-					domElem.setAttribute("onkeyup", `updateForm("${thisKey}")`)
+					// add <id> for data fetching
+					domElem.setAttribute("id", `form-${elem.name}`)
+					// setup update tracking
+					if (elem.attributes.type == "file") {
+						domElem.setAttribute(elem.updateAttr || updateAttr, `updateFormStateFile("${elem.name}")`)
+					} else {
+						domElem.setAttribute(elem.updateAttr || updateAttr, `updateFormState("${elem.name}")`)
+					}
+					
 					break
 				}
 				case "select": {
 					var domElem = elems.ebox.appendChild(document.createElement("select"))
-					const thisKey = elem.name
 					if (elem.classes) {
 						elem.classes.forEach((cssClass) => {
 							domElem.classList.add(cssClass)
@@ -148,7 +217,7 @@ async function init() {
 					if (elem.options && Array.isArray(elem.options)) {
 						// these are the options of the select
 						var defaultOptionIndex = utils.select.findDefault(elem.options)
-						formStateDefaults[thisKey] = elem.options[defaultOptionIndex].value
+						formStateDefaults[elem.name] = elem.options[defaultOptionIndex].value
 						var i = 0
 						elem.options.forEach((opt) => {
 							if (opt.value) {
@@ -168,9 +237,9 @@ async function init() {
 
 					// domElem.setAttribute("placeholder", elem.placeholder ? elem.placeholder : `Original value: ${elem.value}`)
 					// domElem.value = elem.value
-					domElem.setAttribute("id", `form-${thisKey}`)
+					domElem.setAttribute("id", `form-${elem.name}`)
 					// event tracking
-					domElem.setAttribute("onchange", `updateForm("${thisKey}")`)
+					domElem.setAttribute("onchange", `updateFormState("${elem.name}")`)
 					break
 				}
 			}

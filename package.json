@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "electron-mocha test/test.js --only=changeValueTel"
+    "test": "electron-mocha test/test.js --only=changeValueWithType"
   },
   "repository": {
     "type": "git",
