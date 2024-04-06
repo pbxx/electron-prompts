@@ -82,7 +82,8 @@
                 "name": "fileTest",
                 "placeholder": "Try selecting a file",
                 "attributes": {
-                    "type": "file"
+                    "type": "file",
+                    "multiple": true
                 },
                 "classes": [
                     "form-control"

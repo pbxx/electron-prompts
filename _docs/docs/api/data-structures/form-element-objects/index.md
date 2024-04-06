@@ -56,7 +56,7 @@ The `input` type [Form Element](./index.md) will create an HTML `input` element 
 <!-- | `inputType` | No | `string` | `text` | The `type=` attribute for the `<input>` element to be created. Any string-based [HTML `<input>` type](https://www.w3schools.com/html/html_form_input_types.asp) can be used. | -->
 
 ### `input` example
-
+This element is highly customizable via the `type` attribute. See [Using the `type` attribute](./type-input.md) for more details
 ```js
 {
     type: "input",
@@ -64,10 +64,11 @@ The `input` type [Form Element](./index.md) will create an HTML `input` element 
     placeholder: "Enter a new PIN to continue",
     attributes: {
         type: "password"
-    },
-    classes: ["form-control"],
+    }
 },
 ```
+
+
 
 ## type: `select`
 
@@ -88,7 +89,6 @@ The `select` type property will create a `select` menu element in the prompt tha
     options: [
         { value: "test1", text: "Test option 1" },
         { value: "test2", text: "Test option 2", selected: true },
-    ],
-    classes: ["form-select"]
+    ]
 }
 ```

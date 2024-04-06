@@ -176,7 +176,14 @@ async function init() {
 						}
 						Object.keys(elem.attributes).forEach((attrKey) => {
 							if (!lTables.inputHTMLType.restrictedAttributes.includes(attrKey)) {
-								domElem.setAttribute(attrKey, elem.attributes[attrKey])
+								// not a restricted attribute
+								if (elem.attributes[attrKey] === true) {
+									// this is a boolean attribute
+									domElem.setAttribute(attrKey, '')
+								} else {
+									domElem.setAttribute(attrKey, elem.attributes[attrKey])
+								}
+								
 							}
 						})
 					}
