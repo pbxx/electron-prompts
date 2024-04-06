@@ -79,11 +79,10 @@
             },
             {
                 "type": "input",
-                "name": "fileTest",
-                "placeholder": "Try selecting a file",
+                "name": "colorTest",
+                "placeholder": "Try selecting a color",
                 "attributes": {
-                    "type": "file",
-                    "multiple": true
+                    "type": "color"
                 },
                 "classes": [
                     "form-control"
