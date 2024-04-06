@@ -1,4 +1,4 @@
-# Using the `type` attribute
+# Using the input `type` attribute
 
 The `type` attribute, when passed to an `input` type [Form Element](./index.md), will set the HTML input `type` attribute, as well as configure changed data handling on the renderer based on the selected type
 
@@ -6,7 +6,7 @@ Some HTML input types need certain attributes to work correctly. Attributes can 
 
 Refer to the [W3Schools](https://www.w3schools.com/html/html_form_input_types.asp) or [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) documentation for HTML input types for more information
 
-## `input` with attribute `type="date"` example
+## type `"date"` example
 The `"date"` type input will dreate a datepicker that will allow the user to select from a range of dates. The result in `PromptResult.values` when this type is changed is a JavaScript [Date String](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#date_strings)
 ```js
 {
@@ -25,7 +25,7 @@ The `"date"` type input will dreate a datepicker that will allow the user to sel
 testDateValue: "2015-12-24"
 ```
 
-## `input` with attribute `type="file"` example
+## type `"file"` example
 
 The `"file"` type input allows easy file inputs for single or multiple files. If the user selects files in the created input, this type will resolve an Array of Objects in `PromptResult.values` containing information about each file the user selected.
 

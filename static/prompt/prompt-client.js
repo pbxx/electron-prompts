@@ -27,6 +27,7 @@ const lTables = {
 			"time",
 			"week",
 			"month",
+			"color",
 		],
 		restrictedAttributes: [
 			"id",
