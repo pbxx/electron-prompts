@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "testAll": "electron-mocha test/test.js",
     "test": "electron-mocha test/test.js --only=changeValueWithType"
   },
   "repository": {

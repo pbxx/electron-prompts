@@ -1,0 +1,83 @@
+html,
+body {
+  min-height: 100vh;
+  background-color: #0000;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.page-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: #2f2f2f;
+  border-radius: 12px;
+  color: #c1c1c1;
+
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+
+  transform: scale(.98);
+
+}
+
+.title-bar {
+  background-color: #1c1c1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px;
+  border-radius: 12px 12px 0 0;
+}
+
+
+.epc-elembox,
+.epc-buttonbox {
+  width: 100%;
+  padding: 8px 19px;
+  display: flex;
+}
+
+.epc-elembox {
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.epc-elembox h4 {
+  font-size: 1.2em;
+}
+
+.epc-elembox input {
+  margin-bottom: 8px;
+}
+
+.epc-buttonbox {
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #1c1c1c;
+  border-radius: 0 0 12px 12px;
+}
+
+.epc-buttonbox button {
+  margin-left: 8px;
+}
+
+.draggable {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-app-region: drag;
+}
