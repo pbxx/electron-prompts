@@ -14,9 +14,7 @@ Import and instantiate a `PromptManager` for your project:
 ```js
 import PromptManager from "electron-prompts"
 
-const prompts = new PromptManager({
-	devMode: true,
-})
+const prompts = new PromptManager()
 ```
 
 Create and spawn GUI prompts using simple [Prompt Templates](https://pbxx.github.io/electron-prompts/docs/api/data-structures/promptTemplate):

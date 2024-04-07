@@ -13,7 +13,7 @@ export default class PromptManager {
 	constructor(opts) {
 		this.options = {
 			width: 600,
-			baseHeight: 112,
+			baseHeight: 138,
 			resizable: false,
 			devMode: false,
 			promptFile: __dirname + "static/prompt/prompt.html",

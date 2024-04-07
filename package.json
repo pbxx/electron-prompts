@@ -1,11 +1,12 @@
 {
   "name": "electron-prompts",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "An easy tool to enable prompts from the Electron main process",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "electron-mocha test/test.js"
+    "testAll": "electron-mocha test/test.js",
+    "test": "electron-mocha test/test.js --only=changeValueWithType"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 # Prompt Result
 The prompt result is returned from the [`spawn()`](../prompt-manager/spawn.md) method after user completion when either:
-- A value was changed on a given input field
+- A value was changed on an input [Form Element](./form-element-objects/index.md)
 - A button from the Prompt Template was pressed
 
 An example of a Prompt Result object with one changed value is below:
@@ -11,17 +11,17 @@ An example of a Prompt Result object with one changed value is below:
 }
 ```
 
-### `values` object
-A Prompt Result only contains a `values` object if the prompt had editable elements, and one or more values were changed.
+## `values` object
+A Prompt Result only contains a `values` object if the prompt had input elements, and one or more values were changed.
 
-The keys of the items in the `values` object are defined by the `name` property of the [Form Element](./3_form-element-objects.md) that was used to create the input.
+The keys of the items in the `values` object are defined by the `name` property of the [Form Element](./form-element-objects/index.md) that was used to create the input.
 
 
 
-### `button` string
+## `button` string
 
 The `button` property of the Prompt Result will contain:
-- The `string` `name` of the button that was used to submit it, as defined in the button's [Button Element](./4_button-element-objects.md)
+- The `string` `name` of the button that was used to submit it, as defined in the button's [Button Element](./3_button-element-objects.md)
 - `_enter` if the enter key was used
 
 ### Example
