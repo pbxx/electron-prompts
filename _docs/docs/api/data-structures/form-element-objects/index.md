@@ -1,14 +1,15 @@
 # Form Element
 The Form Element is an `object` that defines a text or input element to be used in a prompt.
 
-The `type` property of the Form Element object defines what type of element to create, and can *currently* only be one of the following:
-- `"header"`
-- `"paragraph"`
-- `"input"`
+The `string` `type` property of the Form Element object defines what type of element to create, and can be one of the following:
+- `header` for a header text display
+- `paragraph` for a paragraph text display
+- `input` for a configurable HTML `input`
+- `select` for an HTML `select` dropdown menu
 
 ## type: `header`
 
-The `header` type property inserts an `h4` element into the prompt to display header text
+The `header` type inserts an HTML `h4` element into the prompt to display header text
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
@@ -40,36 +41,38 @@ The `paragraph` type property inserts an `p` element into the prompt to display 
 }
 ```
 
-
-
-
 ## type: `input`
 
-The `input` type property will create a text input in the prompt that will automatically return the value if changed
+The `input` type [Form Element](./index.md) will create an HTML `input` element in the prompt that will return a value in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) if changed
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
 | `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
 | `placeholder` | No | `string` | N/A | The lighter text that appears when the input is empty. |
 | `value` | No | `string` | N/A | The default value that will already be in the input. |
+| `attributes` | No | `Object` | N/A | An object of attributes where `key` is the HTML attribute name, and `value` is attribute value |
 | `classes` | No | `Array` | N/A | An `Array` of `string` CSS classes to apply to the input. |
 
-### `input` example
+<!-- | `inputType` | No | `string` | `text` | The `type=` attribute for the `<input>` element to be created. Any string-based [HTML `<input>` type](https://www.w3schools.com/html/html_form_input_types.asp) can be used. | -->
 
+### `input` example
+This element is highly customizable via the `type` attribute. See [Using the `type` attribute](./type-input.md) for more details
 ```js
 {
     type: "input",
-    name: "username",
-    placeholder: "Enter a username to begin",
-    value: "pbxx",
-    classes: ["form-control"],
+    name: "pin",
+    placeholder: "Enter a new PIN to continue",
+    attributes: {
+        type: "password"
+    }
 },
 ```
 
 
+
 ## type: `select`
 
-The `select` type property will create a select input in the prompt that will automatically return the value if changed
+The `select` type property will create a `select` menu element in the prompt that will automatically return the value if changed
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
@@ -86,8 +89,6 @@ The `select` type property will create a select input in the prompt that will au
     options: [
         { value: "test1", text: "Test option 1" },
         { value: "test2", text: "Test option 2", selected: true },
-    ],
-    classes: ["form-select"]
+    ]
 }
 ```
-
