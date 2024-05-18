@@ -16,7 +16,7 @@ export default class PromptManager {
 			baseHeight: 138,
 			resizable: false,
 			devMode: false,
-			promptFile: __dirname + "static/prompt/prompt.html",
+			promptFile: __dirname + "src/static/prompt/prompt.html",
 			...opts
 		}
 		this.events = new events.EventEmitter()
@@ -88,7 +88,7 @@ export default class PromptManager {
 				width: this.options.width,
 				height: this.options.baseHeight,
 				webPreferences: {
-					preload: path.resolve(__dirname, "static/prompt/preload.js"),
+					preload: path.resolve(__dirname, "src/static/prompt/preload.js"),
 				},
 				autoHideMenuBar: true,
 				transparent: true,

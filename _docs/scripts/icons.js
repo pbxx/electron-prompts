@@ -27,7 +27,7 @@ async function makeIcon(platform, filename) {
 	console.log(file)
 	switch (platform) {
 		case "win32": {
-			const command = `call "${path.resolve("scripts/makeIcons.bat")}" "${path.resolve("static/img/" + file.name + file.extension)}" "${path.resolve("static/img/" + file.name + ".ico")}"`
+			const command = `call "${path.resolve("scripts/makeIcons.bat")}" "${path.resolve("src/static/img/" + file.name + file.extension)}" "${path.resolve("src/static/img/" + file.name + ".ico")}"`
 			var [err, stdout, stderr] = await sprom(execPromise(command))
 			if (err) {
 				throw `exec error: ${err}`

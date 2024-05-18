@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"target": "es5",
+        "allowJs": true,
+        "declaration": true,
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext"
+	},
+	"include": ["./src/**/*", "types.d.ts"]
+}

@@ -107,11 +107,11 @@ body {
 In the Electron main process, your [PromptManager](../api/prompt-manager/index.md) will need to be spawned with the `promptFile` option pointing at the custom HTML file for your app's prompts, like this:
 ```js
 const prompts = new PromptManager({
-	promptFile: "static/prompt/index.html"
+	promptFile: "src/static/prompt/index.html"
 })
 ```
 ## Result
 To provide a simple starting-point, the above HTML and CSS result in a nearly-unstyled prompt that looks like this: 
-![Logo](../../../assets/basic-prompt-styling.png)
+![Logo](../../../src/assets/basic-prompt-styling.png)
 
 If your [PromptManager](../api/prompt-manager/index.md) was spawned with the `devMode` option, you can spawn a DevTools window for debugging in your prompt by pressing `Ctrl+Shift+I` while it is open.
