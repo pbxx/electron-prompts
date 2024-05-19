@@ -112,6 +112,6 @@ const prompts = new PromptManager({
 ```
 ## Result
 To provide a simple starting-point, the above HTML and CSS result in a nearly-unstyled prompt that looks like this: 
-![Logo](../../../src/assets/basic-prompt-styling.png)
+![Logo](../../static/img/basic-prompt-styling.png)
 
 If your [PromptManager](../api/class/prompt-manager/index.md) was spawned with the `devMode` option, you can spawn a DevTools window for debugging in your prompt by pressing `Ctrl+Shift+I` while it is open.

@@ -1,3 +1,8 @@
+# 0.9.12
+- Add `types` property to `package.json`
+- Correct entry point in `package.json`
+- Relocate unused documentation files
+
 # 0.9.11
 - Converted to TypeScript
 - Added multilevel logging with colors
