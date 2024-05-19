@@ -47,7 +47,7 @@ const tests = {
 	},
 	changeValueWithType: async () => {
 		
-		const result = await prompts.spawn( {
+		const result = await prompts.spawn({
 			...pTemplates.defaults,
 			...pTemplates.changeValueWithType,
 		})

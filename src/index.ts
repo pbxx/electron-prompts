@@ -6,11 +6,24 @@ import path from "node:path"
 import events from "node:events"
 
 import { v4 as uuidv4 } from "uuid"
-
-import type { PromptResult } from "./types.ts"
+import { PromptResult, PromptTemplate } from "./types.js"
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url))
 export default class PromptManager {
+	adoptablePrompts: Record<string, PromptTemplate> = {}
+	windows: Record<string, BrowserWindow> = {}
+	options = null
+	events = null
+	/**
+	 * `PromptManager` class
+	 * ----
+	 * [ github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/)
+	 *
+	 * Orchestrates all spawning of prompts and returning of changed data.
+	 * ***
+	 * @param opts
+	 * @returns the PromptManager class
+	 */
 	constructor(opts) {
 		this.options = {
 			width: 600,
@@ -27,8 +40,6 @@ export default class PromptManager {
 		ipcMain.handle("prompt:cancel", this.handlers.cancel)
 		return
 	}
-	options = null
-	events = null
 	logs = {
 		log: (...args) => {
 			if (this.options["devMode"]) {
@@ -41,10 +52,8 @@ export default class PromptManager {
 			}
 		},
 	}
-	adoptablePrompts = {}
-	windows = {}
 	handlers = {
-		adopt: async () => {
+		adopt: async (): Promise<PromptTemplate> => {
 			this.logs.log(`prompt adopt detected...`)
 			var pkeys = Object.keys(this.adoptablePrompts)
 			if (pkeys.length > 0) {
@@ -64,20 +73,31 @@ export default class PromptManager {
 				return null
 			}
 		},
-		sizeUp: async (event, id, amount) => {
+		sizeUp: async (event, id: string, amount: number) => {
 			// size window up based on content size
 			this.windows[id].setSize(this.options.width, this.options.baseHeight + amount)
 		},
-		formDone: async (event, id, data) => {
+		formDone: async (event, id: string, data: PromptResult) => {
 			// handle prompt completion
 			this.events.emit("formDone", id, data)
 		},
-		cancel: async (event, id) => {
+		cancel: async (event, id: string) => {
 			// handle prompt cancellation
 			this.events.emit("formDone", id, null)
 		},
 	}
-	spawn = (opts): Promise<PromptResult | null> => {
+	/**
+	 * `spawn` method (async)
+	 * ----
+	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/spawn)
+	 *
+	 * Spawns a prompt window given a passed `PromptTemplate`
+	 * ***
+	 * @param opts The `PromptTemplate` to use for creating prompt.
+	 * @returns A `PromptResult` object if user completes, `null` if not.
+	 *
+	 */
+	spawn = (opts: PromptTemplate): Promise<PromptResult | null> => {
 		return new Promise<PromptResult | null>((resolve, reject) => {
 			// generate a uuid for the prompt
 			const uuid = uuidv4()
