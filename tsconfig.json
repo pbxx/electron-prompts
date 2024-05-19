@@ -6,7 +6,6 @@
         "declaration": true,
         "moduleResolution": "Node16",
 		"allowSyntheticDefaultImports": true,
-		"allowArbitraryExtensions": true,
         "module": "Node16",
 	},
 	"include": ["./src/**/*", "types.d.ts"]
