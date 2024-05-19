@@ -50,10 +50,6 @@ export default class PromptManager {
 		return
 	}
 	handlers = {
-		/**
-		 * 
-		 * @returns 
-		 */
 		adopt: async (): Promise<PromptTemplate> => {
 			this.logs.log(5, `prompt adopt detected...`)
 			var pkeys = Object.keys(this.adoptablePrompts)
