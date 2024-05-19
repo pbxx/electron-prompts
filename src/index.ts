@@ -1,38 +1,47 @@
+
 // import { app, BrowserWindow, ipcMain } from "electron"
 import { BrowserWindow, ipcMain } from "electron"
+import { v4 as uuidv4 } from "uuid"
+import Logger from "./logger.js"
 
 import url from "node:url"
 import path from "node:path"
 import events from "node:events"
 
-import { v4 as uuidv4 } from "uuid"
-import { PromptResult, PromptTemplate } from "./types.js"
+import { PromptManagerOptions, PromptResult, PromptTemplate } from "./types.js"
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url))
 export default class PromptManager {
 	adoptablePrompts: Record<string, PromptTemplate> = {}
 	windows: Record<string, BrowserWindow> = {}
-	options = null
+	logs: Logger
+	options: PromptManagerOptions
 	events = null
 	/**
 	 * `PromptManager` class
 	 * ----
-	 * [ github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/)
+	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/)
 	 *
 	 * Orchestrates all spawning of prompts and returning of changed data.
 	 * ***
 	 * @param opts
 	 * @returns the PromptManager class
 	 */
-	constructor(opts) {
+	constructor(opts?: PromptManagerOptions) {
 		this.options = {
 			width: 600,
 			baseHeight: 138,
 			resizable: false,
 			devMode: false,
 			promptFile: path.resolve(__dirname + "../src/static/prompt/prompt.html"),
+			logLevel: 3,
+			devLogLevel: 6,
 			...opts,
 		}
+		this.logs = new Logger({
+			logLevel: this.options.devMode ? this.options.devLogLevel : this.options.logLevel,
+		})
+
 		this.events = new events.EventEmitter()
 		ipcMain.handle("prompt:sizeUp", this.handlers.sizeUp)
 		ipcMain.handle("prompt:ready", this.handlers.adopt)
@@ -40,21 +49,9 @@ export default class PromptManager {
 		ipcMain.handle("prompt:cancel", this.handlers.cancel)
 		return
 	}
-	logs = {
-		log: (...args) => {
-			if (this.options["devMode"]) {
-				console.log(...args)
-			}
-		},
-		error: (...args) => {
-			if (this.options["devMode"]) {
-				console.error(...args)
-			}
-		},
-	}
 	handlers = {
 		adopt: async (): Promise<PromptTemplate> => {
-			this.logs.log(`prompt adopt detected...`)
+			this.logs.log(5, `prompt adopt detected...`)
 			var pkeys = Object.keys(this.adoptablePrompts)
 			if (pkeys.length > 0) {
 				// there are prompts available to adopt
@@ -138,7 +135,7 @@ export default class PromptManager {
 			const doneHandler = (id, data) => {
 				if (id === uuid) {
 					// this is our prompt's response
-					this.logs.log(id, data)
+					this.logs.log(5, id, data)
 					remListener()
 					if (data !== null) {
 						// prompt wasn't cancelled, resolve with data

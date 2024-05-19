@@ -1,11 +1,13 @@
 {
 	"compilerOptions": {
 		"outDir": "./dist",
-		"target": "ES5",
+		"target": "ES6",
         "allowJs": true,
         "declaration": true,
-        "moduleResolution": "NodeNext",
-        "module": "NodeNext",
+        "moduleResolution": "Node16",
+		"allowSyntheticDefaultImports": true,
+		"allowArbitraryExtensions": true,
+        "module": "Node16",
 	},
 	"include": ["./src/**/*", "types.d.ts"]
 }

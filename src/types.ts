@@ -1,5 +1,15 @@
 // export type uuid = RegExp = ''
 
+export interface PromptManagerOptions {
+	width?: number
+	baseHeight?: number
+	resizable?: boolean
+	promptFile?: string
+    devMode?: boolean
+	logLevel?: number
+	devLogLevel?: number
+}
+
 export interface OptionsElement {
 	value: string
 	text?: string
@@ -14,7 +24,7 @@ export interface formElement {
 	value?: string
 	attributes?: Record<string, any>
 	options?: Array<OptionsElement>
-    classes?: Array<string>
+	classes?: Array<string>
 }
 
 export interface buttonElement {
@@ -31,12 +41,12 @@ export interface cancelButtonElement {
  * ### PromptTemplate interface
  */
 export interface PromptTemplate {
-    uuid?: string
-    devMode?: boolean
-    windowTitle?: string
-    cancelButton?: cancelButtonElement
-    elements?: Array<formElement>
-    buttons?: Array<buttonElement>
+	uuid?: string
+	devMode?: boolean
+	windowTitle?: string
+	cancelButton?: cancelButtonElement
+	elements?: Array<formElement>
+	buttons?: Array<buttonElement>
 }
 
 export interface PromptResult {
