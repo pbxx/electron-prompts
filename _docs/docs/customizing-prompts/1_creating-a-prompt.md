@@ -7,7 +7,7 @@ The [Client Script](./adding-client-script) will need the following elements in 
 -  `<div>` with class `epc-elembox`
     - This is the div responsible for holding [Form Elements](https://pbxx.github.io/electron-prompts/docs/api/data-structures/form-element-objects)
     - It should display elements in vertical order, such as when `flex-direction: column;` is applied with CSS.
-    - It should have `overflow-y` set to `auto`, ideally. (This will help when tweaking the [`baseHeight`](../api/prompt-manager/index.md) option)
+    - It should have `overflow-y` set to `auto`, ideally. (This will help when tweaking the [`baseHeight`](../api/class/prompt-manager/index.md) option)
 - `<div>` with class `epc-buttonbox`
     - This is the div that will hold the [Button Elements](https://pbxx.github.io/electron-prompts/docs/api/data-structures/button-element-objects) that are rendered in the prompt.
     - By default, this is displayed at the bottom of the prompt window.
@@ -104,7 +104,7 @@ body {
 }
 ```
 ## Init PromptManager with `promptFile` option
-In the Electron main process, your [PromptManager](../api/prompt-manager/index.md) will need to be spawned with the `promptFile` option pointing at the custom HTML file for your app's prompts, like this:
+In the Electron main process, your [PromptManager](../api/class/prompt-manager/index.md) will need to be spawned with the `promptFile` option pointing at the custom HTML file for your app's prompts, like this:
 ```js
 const prompts = new PromptManager({
 	promptFile: "src/static/prompt/index.html"
@@ -114,4 +114,4 @@ const prompts = new PromptManager({
 To provide a simple starting-point, the above HTML and CSS result in a nearly-unstyled prompt that looks like this: 
 ![Logo](../../../src/assets/basic-prompt-styling.png)
 
-If your [PromptManager](../api/prompt-manager/index.md) was spawned with the `devMode` option, you can spawn a DevTools window for debugging in your prompt by pressing `Ctrl+Shift+I` while it is open.
+If your [PromptManager](../api/class/prompt-manager/index.md) was spawned with the `devMode` option, you can spawn a DevTools window for debugging in your prompt by pressing `Ctrl+Shift+I` while it is open.

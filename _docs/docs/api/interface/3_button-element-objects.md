@@ -1,4 +1,4 @@
-# Button Element
+# ButtonElement
 The Button Element `object` defines a button to be added to a prompt's button container.
 
 | Property | Required | Type | Default | Details |

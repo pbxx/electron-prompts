@@ -1,4 +1,4 @@
-# Prompt Template
+# PromptTemplate
 
 The Prompt Template allows for customization of the text and inputs used in a prompt.
 

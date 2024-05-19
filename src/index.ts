@@ -20,7 +20,7 @@ export default class PromptManager {
 	/**
 	 * `PromptManager` class
 	 * ----
-	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/)
+	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/class/prompt-manager/)
 	 *
 	 * Orchestrates all spawning of prompts and returning of changed data.
 	 * ***
@@ -50,6 +50,10 @@ export default class PromptManager {
 		return
 	}
 	handlers = {
+		/**
+		 * 
+		 * @returns 
+		 */
 		adopt: async (): Promise<PromptTemplate> => {
 			this.logs.log(5, `prompt adopt detected...`)
 			var pkeys = Object.keys(this.adoptablePrompts)
@@ -86,7 +90,7 @@ export default class PromptManager {
 	/**
 	 * `spawn` method (async)
 	 * ----
-	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/prompt-manager/spawn)
+	 * [github.io docs ⧉](https://pbxx.github.io/electron-prompts/docs/api/class/prompt-manager/spawn)
 	 *
 	 * Spawns a prompt window given a passed `PromptTemplate`
 	 * ***

@@ -1,4 +1,4 @@
-# Prompt Result
+# PromptResult
 The prompt result is returned from the [`spawn()`](../prompt-manager/spawn.md) method after user completion when either:
 - A value was changed on an input [Form Element](./form-element-objects/index.md)
 - A button from the Prompt Template was pressed

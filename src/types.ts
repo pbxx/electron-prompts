@@ -1,5 +1,3 @@
-// export type uuid = RegExp = ''
-
 export interface PromptManagerOptions {
 	width?: number
 	baseHeight?: number
@@ -18,16 +16,17 @@ export interface OptionsElement {
 /**
  * FormElement interface
  */
-export interface formElement {
+export interface FormElement {
 	name?: string
 	placeholder?: string
 	value?: string
+	type?: string
 	attributes?: Record<string, any>
 	options?: Array<OptionsElement>
 	classes?: Array<string>
 }
 
-export interface buttonElement {
+export interface ButtonElement {
 	name: string
 	value?: string
 	classes?: Array<string>
@@ -45,8 +44,8 @@ export interface PromptTemplate {
 	devMode?: boolean
 	windowTitle?: string
 	cancelButton?: cancelButtonElement
-	elements?: Array<formElement>
-	buttons?: Array<buttonElement>
+	elements?: Array<FormElement>
+	buttons?: Array<ButtonElement>
 }
 
 export interface PromptResult {
