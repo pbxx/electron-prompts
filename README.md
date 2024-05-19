@@ -1,6 +1,6 @@
 
 # electron-prompts
-![Logo](assets/prompt-screenshot.png)
+![Logo](src/assets/prompt-screenshot.png)
 
 An easy tool for creating interactive prompts from the Electron main process
 

@@ -1,16 +1,23 @@
-import { expect } from "chai"
 import { app } from "electron"
 import fs from "node:fs"
-import PromptManager from "../index.js"
+import PromptManager from "../dist/index.js"
+import { expect } from "chai"
+import Logger from "../dist/logger.js"
 
 var options
+
+// const expect = await import("chai").expect
 
 const prompts = new PromptManager({
 	devMode: true,
 	resizable: true,
 })
 
-const pTemplates = JSON.parse(fs.readFileSync("test/test-prompts.json"))
+const logs = new Logger({
+	logLevel: 6,
+})
+
+const pTemplates = JSON.parse(fs.readFileSync("test/test-prompts.json").toString())
 const templateKeys = Object.keys(pTemplates)
 
 const tests = {
@@ -37,13 +44,14 @@ const tests = {
 			expect(result).to.be.ok
 			expect(result.values).to.be.ok
 			expect(result.values).to.be.ok
-			console.log(result.values)
+			logs.log(5, result.values)
 			expect(result.values.testSelect).to.equal("test1")
 			return
 		})
 	},
 	changeValueWithType: async () => {
-		const result = await prompts.spawn({
+		
+		const result = await prompts.spawn( {
 			...pTemplates.defaults,
 			...pTemplates.changeValueWithType,
 		})
@@ -51,7 +59,7 @@ const tests = {
 		it("correct value should be returned on changed prompt with inputType specified", async () => {
 			expect(result).to.be.an("object").that.is.not.empty
 			expect(result.values.testValue).to.be.ok
-			console.log(result.values)
+			logs.log(5, result.values)
 			expect(result.values.testValue).to.not.equal(pTemplates.changeValueWithType.elements[2].value)
 			return
 		})
@@ -76,7 +84,7 @@ const tests = {
 		})
 
 		it("correct value should be returned UN-changed select", async () => {
-			console.log(selectResult2)
+			logs.log(5, selectResult2)
 			expect(selectResult2).to.be.ok
 			expect(selectResult2.values).to.not.be.ok
 			expect(selectResult2.values).to.not.be.ok
@@ -110,12 +118,27 @@ const tests = {
 	},
 }
 
-const runPromptTest = async (key) => {
-	return
+const run = async () => {
+	
+	// logs.log(5, pTemplates)
+	if ("only" in options) {
+		// await runPromptTest(options.only)
+		await tests[options.only]()
+	} else {
+		for (var key of templateKeys) {
+			// logs.log(5, key)
+			// await runPromptTest(key)
+			if (key in tests) {
+				await tests[key]()
+			}
+		}
+	}
 }
 
 const parseArgs = async () => {
+	
 	var options = {}
+	// logs.log(5, process.argv)
 	for (var arg of process.argv) {
 		// iterate through all args
 		if (arg.includes("--")) {
@@ -136,23 +159,34 @@ const parseArgs = async () => {
 	return options
 }
 
-const run = async () => {
-	// console.log(pTemplates)
-	if ("only" in options) {
-		// await runPromptTest(options.only)
-		await tests[options.only]()
-	} else {
-		for (var key of templateKeys) {
-			// console.log(key)
-			// await runPromptTest(key)
-			if (key in tests) {
-				await tests[key]()
-			}
-			
-		}
-	}
+const setup = async () => {
+	// logs.log(5, "I am actually starting")
+	options = await parseArgs()
+	logs.log(5, "Optional arguments:", options)
+
+	await run()
+	logs.log(5, "test complete")
 }
 
-options = await parseArgs()
-console.log(options)
-await run()
+
+await setup()
+logs.log(5, "test complete")
+
+// app.whenReady().then(setup)
+// run()
+// .then(() => {
+// 	logs.log(5, "test complete")
+// })
+// .catch((err) => {
+// 	console.error(err)
+// })
+
+// app.on("ready", async () => {
+// 	logs.log(5, "I am actually starting")
+// 	options = await parseArgs()
+// 	logs.log(5, options)
+
+// 	await run()
+// 	logs.log(5, "test complete")
+// })
+

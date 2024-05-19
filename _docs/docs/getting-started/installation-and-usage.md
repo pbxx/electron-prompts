@@ -65,6 +65,7 @@ Calling the async [`spawn()`](/docs/api/prompt-manager/spawn) method on the [`Pr
 ```js
 const result = await prompts.spawn(pTemplate)
 ```
-![Logo](../../static/img/prompt-screenshot.png)
+![Logo](../../../src/assets/prompt-screenshot.png)
+
 
 Once the prompt has been completed, the method returns a [Prompt Result](/docs/api/data-structures/promptResult) object, or `null` if prompt was closed or cancelled

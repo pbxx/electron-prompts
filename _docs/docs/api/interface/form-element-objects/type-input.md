@@ -1,4 +1,4 @@
-# Using the input `type` attribute
+# Input element `type` attribute
 
 The `type` attribute, when passed to an `input` type [Form Element](./index.md), will set the HTML input `type` attribute, as well as configure changed data handling on the renderer based on the selected type
 

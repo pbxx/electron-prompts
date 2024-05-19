@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"target": "ES6",
+        "allowJs": true,
+        "declaration": true,
+        "moduleResolution": "Node16",
+		"allowSyntheticDefaultImports": true,
+        "module": "Node16",
+	},
+	"include": ["./src/**/*", "types.d.ts"]
+}

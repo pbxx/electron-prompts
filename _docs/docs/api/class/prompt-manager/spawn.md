@@ -1,4 +1,4 @@
-# `spawn()`
+# `spawn()` method
 
 The async `spawn()` method spawns a prompt window given a passed [Prompt Template](/docs/api/data-structures/promptTemplate):
 
@@ -31,9 +31,9 @@ The method will wait for the user to submit or cancel the prompt before resolvin
 
 ### Arguments
 
-| Name             | Required | Default | Details                                                                                                            |
-| ---------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| `promptTemplate` | Yes      | N/A     | The [Prompt Template](/docs/api/data-structures/promptTemplate) to use when spawning the prompt and returning data |
+| Name | Required | Default | Details |
+| ----- | ----- | ----- | ----- |
+| `promptTemplate` | Yes | N/A | The [Prompt Template](/docs/api/data-structures/promptTemplate) to use when spawning the prompt and returning data |
 
 ### Returns
 
