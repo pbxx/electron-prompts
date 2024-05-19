@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "testAll": "electron-mocha test/test.js",
-    "test": "electron-mocha test/test.js --only=changeValueWithType"
+    "build": "tsc",
+    "test": "npm run build && electron-mocha test/test.js",
+    "test-nobuild": "electron-mocha test/test.js",
+    "test-simple": "npm run build && electron test/test-simple.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,8 @@
   },
   "devDependencies": {
     "chai": "^5.1.0",
-    "electron": "^29.1.6"
+    "electron": "^29.1.6",
+    "electron-mocha": "^12.3.0",
+    "typescript": "^5.4.5"
   }
 }

@@ -1,16 +1,19 @@
-import { expect } from "chai"
 import { app } from "electron"
 import fs from "node:fs"
-import PromptManager from "../index.js"
+import PromptManager from "../dist/index.js"
+import { expect } from "chai"
+
 
 var options
+
+// const expect = await import("chai").expect
 
 const prompts = new PromptManager({
 	devMode: true,
 	resizable: true,
 })
 
-const pTemplates = JSON.parse(fs.readFileSync("test/test-prompts.json"))
+const pTemplates = JSON.parse(fs.readFileSync("test/test-prompts.json").toString())
 const templateKeys = Object.keys(pTemplates)
 
 const tests = {
@@ -43,6 +46,7 @@ const tests = {
 		})
 	},
 	changeValueWithType: async () => {
+		
 		const result = await prompts.spawn({
 			...pTemplates.defaults,
 			...pTemplates.changeValueWithType,
@@ -110,12 +114,27 @@ const tests = {
 	},
 }
 
-const runPromptTest = async (key) => {
-	return
+const run = async () => {
+	
+	// console.log(pTemplates)
+	if ("only" in options) {
+		// await runPromptTest(options.only)
+		await tests[options.only]()
+	} else {
+		for (var key of templateKeys) {
+			// console.log(key)
+			// await runPromptTest(key)
+			if (key in tests) {
+				await tests[key]()
+			}
+		}
+	}
 }
 
 const parseArgs = async () => {
+	
 	var options = {}
+	// console.log(process.argv)
 	for (var arg of process.argv) {
 		// iterate through all args
 		if (arg.includes("--")) {
@@ -136,23 +155,34 @@ const parseArgs = async () => {
 	return options
 }
 
-const run = async () => {
-	// console.log(pTemplates)
-	if ("only" in options) {
-		// await runPromptTest(options.only)
-		await tests[options.only]()
-	} else {
-		for (var key of templateKeys) {
-			// console.log(key)
-			// await runPromptTest(key)
-			if (key in tests) {
-				await tests[key]()
-			}
-			
-		}
-	}
+const setup = async () => {
+	console.log("I am actually starting")
+	options = await parseArgs()
+	console.log(options)
+
+	await run()
+	console.log("test complete")
 }
 
-options = await parseArgs()
-console.log(options)
-await run()
+
+await setup()
+console.log("test complete")
+
+// app.whenReady().then(setup)
+// run()
+// .then(() => {
+// 	console.log("test complete")
+// })
+// .catch((err) => {
+// 	console.error(err)
+// })
+
+// app.on("ready", async () => {
+// 	console.log("I am actually starting")
+// 	options = await parseArgs()
+// 	console.log(options)
+
+// 	await run()
+// 	console.log("test complete")
+// })
+
