@@ -1,0 +1,203 @@
+{
+    "slide1": {
+        "windowTitle": "electron-prompts",
+        "cancelButton": {
+            "classes": [
+                "btn",
+                "btn-secondary"
+            ]
+        },
+        "elements": [
+            {
+                "type": "header",
+                "value": "Easy and customizable prompts."
+            },
+            {
+                "type": "paragraph",
+                "value": "Collect user input easily, with as little as one input:"
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "placeholder": "Enter username here...",
+                "classes": [
+                    "form-control"
+                ]
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
+                "value": "Save Changes"
+            }
+        ]
+    },
+    "slide2": {
+        "windowTitle": "Inputs",
+        "cancelButton": {
+            "classes": [
+                "btn",
+                "btn-secondary"
+            ]
+        },
+        "elements": [
+            {
+                "type": "header",
+                "value": "Multiple inputs are right-at-home:"
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "placeholder": "Enter username here...",
+                "classes": [
+                    "form-control"
+                ],
+                "value": "pbxx"
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "placeholder": "Enter password here...",
+                "classes": [
+                    "form-control"
+                ],
+                "attributes": {
+                    "type": "password"
+                },
+                "value": "$YouCantSeeMe!"
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
+                "value": "Save Changes"
+            },
+            {
+                "name": "commit",
+                "classes": [
+                    "btn",
+                    "btn-danger"
+                ],
+                "value": "As well as"
+            },
+            {
+                "name": "commit",
+                "classes": [
+                    "btn",
+                    "btn-success"
+                ],
+                "value": "Multiple buttons"
+            }
+        ]
+    },
+    "slide3": {
+        "windowTitle": "Inputs",
+        "cancelButton": {
+            "classes": [
+                "btn",
+                "btn-secondary"
+            ]
+        },
+        "elements": [
+            {
+                "type": "header",
+                "value": "Includes dropdowns:"
+            },
+            {
+                "type": "select",
+                "name": "testSelect",
+                "options": [
+                    { "value": "test1", "text": "Test option 1" },
+                    { "value": "test2", "text": "Test option 2", "selected": true }
+                ]
+            }
+        ],
+        "buttons": [
+            {
+                "name": "nice",
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
+                "value": "Nice"
+            }
+        ]
+    },
+    "slide4": {
+        "windowTitle": "electron-prompts",
+        "cancelButton": {
+            "classes": [
+                "btn",
+                "btn-secondary"
+            ]
+        },
+        "elements": [
+            {
+                "type": "header",
+                "value": "And more!"
+            },
+            {
+                "type": "paragraph",
+                "value": "Like dates:"
+            },
+            {
+                "name": "testValue",
+                "type": "input",
+                "attributes": {
+                    "type": "date",
+                    "min": "2002-01-01",
+                    "max": "2102-01-01"
+                },
+                "classes": [
+                    "form-control"
+                ],
+                "value": "2007-01-01"
+            },
+            {
+                "type": "paragraph",
+                "value": "Or colors:"
+            },
+            {
+                "type": "input",
+                "name": "colorTest",
+                "placeholder": "Try selecting a color",
+                "attributes": {
+                    "type": "color"
+                },
+                "classes": [
+                    "form-control"
+                ]
+            },
+            {
+                "type": "paragraph",
+                "value": "Or files:"
+            },
+            {
+                "name": "testFileValue",
+                "type": "input",
+                "attributes": {
+                    "type": "file",
+                    "multiple": true
+                }
+            }
+        ],
+        "buttons": [
+            {
+                "name": "submit",
+                "classes": [
+                    "btn",
+                    "btn-primary"
+                ],
+                "value": "Done"
+            }
+        ]
+    }
+}

@@ -1,6 +1,6 @@
 {
   "name": "electron-prompts",
-  "version": "0.9.12",
+  "version": "0.9.13",
   "description": "An easy tool to enable prompts from the Electron main process",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "build": "tsc",
     "test": "npm run build && electron-mocha test/test.js",
     "test-nobuild": "electron-mocha test/test.js",
-    "test-simple": "npm run build && electron test/test-simple.js"
+    "model-prompts": "electron test/test-simple.js"
   },
   "repository": {
     "type": "git",

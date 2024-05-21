@@ -43,11 +43,11 @@ The `paragraph` type property inserts an `p` element into the prompt to display 
 
 ## type: `input`
 
-The `input` type [Form Element](./index.md) will create an HTML `input` element in the prompt that will return a value in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) if changed
+The `input` type [Form Element](./index.md) will create an HTML `input` element in the prompt that will return a value in the [Prompt Result](/docs/api/interface/2_promptResult.md) if changed
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
-| `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
+| `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/interface/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
 | `placeholder` | No | `string` | N/A | The lighter text that appears when the input is empty. |
 | `value` | No | `string` | N/A | The default value that will already be in the input. |
 | `attributes` | No | `Object` | N/A | An object of attributes where `key` is the HTML attribute name, and `value` is attribute value |
@@ -76,7 +76,7 @@ The `select` type property will create a `select` menu element in the prompt tha
 
 | Property | Required | Type | Default | Details |
 | --- | -- | -- |-- | -- |
-| `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/data-structures/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
+| `name` | Yes | `string` | N/A | Key name that will be used in the [Prompt Result](/docs/api/interface/2_promptResult.md) `values` object if the value is changed. Must be unique to the prompt. |
 | `options` | No | `Array` | N/A | An `Array` of Options Elements to add to the select menu. |
 | `classes` | No | `Array` | N/A | An `Array` of `string` CSS classes to apply to the input. |
 

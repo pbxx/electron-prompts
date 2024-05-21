@@ -1,0 +1,1 @@
+ffmpeg -f image2 -framerate 0.35 -y -i frame%d.png -loop 0 showcase.webp

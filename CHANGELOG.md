@@ -1,3 +1,6 @@
+# 0.9.13
+- Correct link errors in docs and readme
+
 # 0.9.12
 - Add `types` property to `package.json`
 - Correct entry point in `package.json`

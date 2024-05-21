@@ -1,8 +1,11 @@
-
 # electron-prompts
-![Logo](_docs/static/img/prompt-screenshot.png)
+[![NPM Version](https://img.shields.io/npm/v/electron-prompts)](https://www.npmjs.com/package/electron-prompts)
+![NPM Type Definitions](https://img.shields.io/npm/types/electron-prompts)
+[![Docs](https://img.shields.io/badge/docs-github.io-green)](https://pbxx.github.io/electron-prompts/)
 
 An easy tool for creating interactive prompts from the Electron main process
+
+![Logo](_docs/static/img/showcase/showcase.webp)
 
 # Installation
 ```bash
@@ -17,7 +20,7 @@ import PromptManager from "electron-prompts"
 const prompts = new PromptManager()
 ```
 
-Create and spawn GUI prompts using simple [Prompt Templates](https://pbxx.github.io/electron-prompts/docs/api/data-structures/promptTemplate):
+Create and spawn GUI prompts using simple [Prompt Templates](https://pbxx.github.io/electron-prompts/docs/api/interface/promptTemplate):
 ```js
 const pTemplate = {
 	windowTitle: "electron-prompts",
